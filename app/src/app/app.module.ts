@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MapComponent } from './map/map.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
