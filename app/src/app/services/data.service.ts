@@ -27,17 +27,39 @@ export class DataService {
 
 
   private extractData(res) {
+    let featureCollection = {
+      'type': 'geojson',
+      'data': {
+        'type': 'FeatureCollection',
+        'features': [
+
+        ]
+      }
+    }
     if (res.status != 200) {
       console.log('ERROR : data loading')
       this.evtDataIsReady.emit(false)
     }
+    // format data to geojson
     for (let i = 0; i < res.countryData.length; i++) {
+      const feature = {
+        'type': 'Feature',
+        'geometry': {
+          'type': 'Point',
+          'coordinates': []
+        },
+        'properties': {
+
+        }
+      }
       const countryName = res.countryData[i].country
       const countryEquivalent = Countries.find((o) => { return o.name.toLocaleLowerCase().trim() === countryName.toLocaleLowerCase().trim() })
-      res.countryData[i]['coords'] = countryEquivalent.latlng
-
+      feature.geometry['coordinates'] = countryEquivalent.latlng.reverse()
+      feature.properties = res.countryData[i]
+      featureCollection.data.features.push(feature)
     }
-    this.store.dataset.countryData = res.countryData
+    this.store.dataset.countryData = featureCollection
+    console.log(JSON.stringify(featureCollection))
     this.store.dataset.totalCases = res.totalCases
     this.store.dataset.totalDeaths = res.totalDeaths
     this.store.dataset.fatalityRate = res.fatalityRate
