@@ -59,7 +59,7 @@ export class DataService {
       featureCollection.data.features.push(feature)
     }
     this.store.dataset.countryData = featureCollection
-    console.log(JSON.stringify(featureCollection))
+    // console.log(JSON.stringify(featureCollection))
     this.store.dataset.totalCases = res.totalCases
     this.store.dataset.totalDeaths = res.totalDeaths
     this.store.dataset.fatalityRate = res.fatalityRate
