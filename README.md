@@ -9,3 +9,7 @@ the dataset used is provided and daily updated by [Coronavirus API](https://gith
 thanks  to joshuaferr1s  for this great work.
 
 
+
+# TODO 
+
+- loading dynamically coronavirus configuration 

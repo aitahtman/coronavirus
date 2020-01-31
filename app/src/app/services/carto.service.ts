@@ -30,6 +30,38 @@ export class CartoService {
 
     });
 
+    // toggle cursor on coronavirus source
+    this.map.on('mouseenter', 'coronavirus', function () {
+      that.map.getCanvas().style.cursor = 'pointer';
+    });
+
+    this.map.on('mouseleave', 'coronavirus', function () {
+      that.map.getCanvas().style.cursor = '';
+    });
+
+    // click evt
+
+    this.map.on('click', 'coronavirus', function (e) {
+      const coordinates = e.features[0].geometry.coordinates.slice();
+      const props = e.features[0].properties
+      console.log(e.features[0].properties)
+      var description = `
+      <h4> ${props.country}</h4>
+      <p> <b> Confirmed cases </b> : ${props.confirmedCases} </p>
+      <p> <b> Reported deaths </b> : ${props.reportedDeaths} </p>
+      `
+      // Ensure that if the map is zoomed out such that multiple
+      // copies of the feature are visible, the popup appears
+      // over the copy being pointed to.
+      while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+      }
+
+      new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(that.map);
+    });
   }
 
   addGeoJsonSource(sourceName, geojson) {
