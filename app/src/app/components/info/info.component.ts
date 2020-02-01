@@ -7,7 +7,7 @@ import { StoreService } from "../../services/store.service";
 })
 export class InfoComponent implements OnInit {
 
-  constructor(private store: StoreService) { }
+  constructor(public store: StoreService) { }
 
   ngOnInit() {
   }
