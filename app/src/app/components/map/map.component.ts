@@ -23,9 +23,8 @@ export class MapComponent implements OnInit {
     this.data.readCSV()
     this.carto.buildMap()
     this.data.evtDataIsReady.subscribe((data) => {
-      // console.log('READY', data)
-      console.log(this.store.dataset)
       this.carto.addGeoJsonSource('coronavirus', this.store.dataset.countryData)
+      this.carto.resizeMap()
       this.isLoading = false
     })
   }
