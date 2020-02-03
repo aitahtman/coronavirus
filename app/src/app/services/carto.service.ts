@@ -74,7 +74,7 @@ export class CartoService {
       paint: {
         "circle-radius": ["case",
           ["==", ["get", "country"], "China"], 70,
-          ["*",["get", "confirmedCases"],2]
+          ["*", ["get", "confirmedCases"], 2]
         ],
         "circle-opacity": 0.7,
         "circle-color": "red",
@@ -82,5 +82,8 @@ export class CartoService {
     })
   }
 
+  resizeMap() {
+    this.map.resize()
+  }
 
 }
