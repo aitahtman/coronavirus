@@ -18,7 +18,7 @@ export class CartoService {
     const that = this
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/dark-v10',
+      style: 'mapbox://styles/aitahtman/ck6975yua1zb81imow9xarbld',
       zoom: 2
     });
 
