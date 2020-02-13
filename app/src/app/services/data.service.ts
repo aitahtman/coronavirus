@@ -54,9 +54,12 @@ export class DataService {
       }
       const countryName = res.countryData[i].country
       const countryEquivalent = Countries.find((o) => { return o.name.toLocaleLowerCase().trim() === countryName.toLocaleLowerCase().trim() })
-      feature.geometry['coordinates'] = countryEquivalent.latlng.reverse()
-      feature.properties = res.countryData[i]
-      featureCollection.data.features.push(feature)
+      if (countryEquivalent) {
+        feature.geometry['coordinates'] = countryEquivalent.latlng.reverse()
+        feature.properties = res.countryData[i]
+        featureCollection.data.features.push(feature)
+      }
+
     }
     this.store.dataset.countryData = featureCollection
     // console.log(JSON.stringify(featureCollection))
