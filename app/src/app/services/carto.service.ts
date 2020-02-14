@@ -74,9 +74,14 @@ export class CartoService {
       paint: {
         "circle-radius": ["case",
           ["==", ["get", "country"], "China"], 70,
-          ["*", ["get", "confirmedCases"], 2]
+          ["<=", ["get", "confirmedCases"], 5], 5,
+          ["*", ["get", "confirmedCases"], 1]
         ],
-        "circle-opacity": 0.7,
+        "circle-opacity": ["case",
+          ["==", ["get", "country"], "China"], 1,
+          ["<=", ["get", "confirmedCases"], 5], 0.3,
+          0.7
+        ],
         "circle-color": "red",
       }
     })
