@@ -9,10 +9,6 @@ this application aims to follow the evolution of Corona Virus all over the world
 ![](https://pbs.twimg.com/media/EP2xZmsWsAAoSzP?format=jpg&name=4096x4096)
 
 
-# DEMO
-
-You can get access to a live demo  [here](https://aitahtman.github.io/coronavirus/ "Data").
-
 # DATA USED
 the dataset used is provided and daily updated by [Coronavirus API](https://github.com/joshuaferr1s/api-server/blob/master/src/routes/coronavirus/README.md).
 
