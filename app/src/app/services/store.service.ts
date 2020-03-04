@@ -10,6 +10,8 @@ export class StoreService {
 
   dataset: any = {
     'countryData':[],
+    'data':{},
+    'formatedData':[],
     'totalCases': undefined,
     'totalDeaths': undefined,
     'fatalityRate':undefined

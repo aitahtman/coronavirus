@@ -20,10 +20,12 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.data.readCSV()
+    this.data.getData()
+    // this.data.readCSV()
     this.carto.buildMap()
     this.data.evtDataIsReady.subscribe((data) => {
-      this.carto.addGeoJsonSource('coronavirus', this.store.dataset.countryData)
+      // console.log(this.store.dataset.data.Confirmed.current)
+      this.carto.addGeoJsonSource('coronavirus', this.store.dataset.formatedData.Confirmed)
       this.carto.resizeMap()
       this.isLoading = false
     })

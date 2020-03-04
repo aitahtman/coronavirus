@@ -73,8 +73,8 @@ export class CartoService {
       source: sourceName,
       paint: {
         "circle-radius": ["case",
-          ["==", ["get", "country"], "China"], 70,
-          ["<=", ["get", "confirmedCases"], 5], 5,
+          [">=", ["get", "confirmedCases"], 1000], 50,
+          ["<=", ["get", "confirmedCases"], 1000], 5,
           ["*", ["get", "confirmedCases"], 1]
         ],
         "circle-opacity": ["case",

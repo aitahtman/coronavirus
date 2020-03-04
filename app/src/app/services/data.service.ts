@@ -9,6 +9,7 @@ import Countries from '../../assets/countries.json';
 })
 export class DataService {
   csvData: any[] = [];
+  formatedData = {};
   @Output() evtDataIsReady = new EventEmitter();
   constructor(private http: HttpClient,
     public store: StoreService) {
@@ -25,48 +26,52 @@ export class DataService {
       );
   }
 
+  // create feature from json object  [needs long lat fields]
+  makeFeature(json) {
+    return {
+      'type': 'Feature',
+      'geometry': {
+        'type': 'Point',
+        'coordinates': [json.long, json.lat]
+      },
+      'properties': {
+        ...json
+      }
+    }
+  }
 
-  private extractData(res) {
-    let featureCollection = {
+  // makes geojson format from json array
+  makeGeojson(json) {
+    return {
       'type': 'geojson',
       'data': {
         'type': 'FeatureCollection',
-        'features': [
-
-        ]
+        'features': json.current.map(o => this.makeFeature(o))
       }
     }
-    if (res.status != 200) {
-      console.log('ERROR : data loading')
-      this.evtDataIsReady.emit(false)
-    }
-    // format data to geojson
-    for (let i = 0; i < res.countryData.length; i++) {
-      const feature = {
-        'type': 'Feature',
-        'geometry': {
-          'type': 'Point',
-          'coordinates': []
-        },
-        'properties': {
+  }
 
-        }
-      }
-      const countryName = res.countryData[i].country
-      const countryEquivalent = Countries.find((o) => { return o.name.toLocaleLowerCase().trim() === countryName.toLocaleLowerCase().trim() })
-      if (countryEquivalent) {
-        feature.geometry['coordinates'] = countryEquivalent.latlng.reverse()
-        feature.properties = res.countryData[i]
-        featureCollection.data.features.push(feature)
-      }
+
+  private extractData(res) {
+    // looping over res to generate the geojson
+    const keys = Object.keys(res)
+    for (const key of keys) {
+      let geojson = this.makeGeojson(res[key])
+      this.store.dataset.formatedData[key]=geojson
 
     }
-    this.store.dataset.countryData = featureCollection
-    // console.log(JSON.stringify(featureCollection))
-    this.store.dataset.totalCases = res.totalCases
-    this.store.dataset.totalDeaths = res.totalDeaths
-    this.store.dataset.fatalityRate = res.fatalityRate
     this.evtDataIsReady.emit(true)
+    console.log(this.store.dataset.formatedData)
+  }
+
+  getData() {
+    this.http.get(`${environment.dataUrl}getData`).subscribe(
+      data => this.extractData(data),
+      err => {
+        console.log(err)
+        this.evtDataIsReady.emit(false)
+      }
+    )
   }
 
 
