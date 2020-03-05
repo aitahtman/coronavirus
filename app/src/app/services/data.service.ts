@@ -46,7 +46,7 @@ export class DataService {
       'type': 'geojson',
       'data': {
         'type': 'FeatureCollection',
-        'features': json.current.map(o => this.makeFeature(o))
+        'features': json.map(o => this.makeFeature(o))
       }
     }
   }
@@ -54,14 +54,12 @@ export class DataService {
 
   private extractData(res) {
     // looping over res to generate the geojson
-    const keys = Object.keys(res)
-    for (const key of keys) {
-      let geojson = this.makeGeojson(res[key])
-      this.store.dataset.formatedData[key]=geojson
-
+    if (res) {
+      let geojson = this.makeGeojson(res.current)
+      this.store.dataset.formatedData = geojson
+      this.evtDataIsReady.emit(true)
     }
-    this.evtDataIsReady.emit(true)
-    console.log(this.store.dataset.formatedData)
+    // console.log(this.store.dataset.formatedData)
   }
 
   getData() {

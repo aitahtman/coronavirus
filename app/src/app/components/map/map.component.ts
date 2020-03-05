@@ -22,13 +22,30 @@ export class MapComponent implements OnInit {
     this.isLoading = true;
     this.data.getData()
     // this.data.readCSV()
-    this.carto.buildMap()
+
     this.data.evtDataIsReady.subscribe((data) => {
-      // console.log(this.store.dataset.data.Confirmed.current)
-      this.carto.addGeoJsonSource('coronavirus', this.store.dataset.formatedData.Confirmed)
-      this.carto.resizeMap()
-      this.isLoading = false
+      this.carto.buildMap()
+      this.store.ready.data = true
+
     })
+
+    this.carto.evtMapIsReady.subscribe((b) => {
+      if (this.store.ready.data) {
+        this.carto.addGeoJsonSource('coronavirus', this.store.dataset.formatedData)
+        this.carto.resizeMap()
+        this.isLoading = false
+        this.store.ready.map = true
+      }
+
+
+    })
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    this.data.evtDataIsReady.unsubscribe()
+    this.carto.evtMapIsReady.unsubscribe()
   }
 
 }
