@@ -9,6 +9,7 @@ import Countries from '../../assets/countries.json';
 })
 export class DataService {
   csvData: any[] = [];
+  formatedData = {};
   @Output() evtDataIsReady = new EventEmitter();
   constructor(private http: HttpClient,
     public store: StoreService) {
@@ -25,45 +26,55 @@ export class DataService {
       );
   }
 
+  // create feature from json object  [needs long lat fields]
+  makeFeature(json) {
+    return {
+      'type': 'Feature',
+      'geometry': {
+        'type': 'Point',
+        'coordinates': [json.long, json.lat]
+      },
+      'properties': {
+        ...json
+      }
+    }
+  }
 
-  private extractData(res) {
-    let featureCollection = {
+  // makes geojson format from json array
+  makeGeojson(json) {
+    return {
       'type': 'geojson',
       'data': {
         'type': 'FeatureCollection',
-        'features': [
-
-        ]
+        'features': json.map(o => this.makeFeature(o))
       }
     }
-    if (res.status != 200) {
-      console.log('ERROR : data loading')
-      this.evtDataIsReady.emit(false)
-    }
-    // format data to geojson
-    for (let i = 0; i < res.countryData.length; i++) {
-      const feature = {
-        'type': 'Feature',
-        'geometry': {
-          'type': 'Point',
-          'coordinates': []
-        },
-        'properties': {
+  }
 
-        }
-      }
-      const countryName = res.countryData[i].country
-      const countryEquivalent = Countries.find((o) => { return o.name.toLocaleLowerCase().trim() === countryName.toLocaleLowerCase().trim() })
-      feature.geometry['coordinates'] = countryEquivalent.latlng.reverse()
-      feature.properties = res.countryData[i]
-      featureCollection.data.features.push(feature)
+
+  private extractData(res) {
+    // looping over res to generate the geojson
+    if (res) {
+      // console.log(res.current)
+      let geojson = this.makeGeojson(res.current)
+      this.store.dataset.formatedData = geojson
+      this.store.dataset.totalCases = res.current.map(o => parseInt(o.Confirmed)).reduce((acc, curr) => acc + curr)
+      this.store.dataset.totalDeaths = res.current.map(o => parseInt(o.Deaths)).reduce((acc, curr) => acc + curr)
+      this.store.dataset.fatalityRate =
+        Math.round(((this.store.dataset.totalDeaths / this.store.dataset.totalCases * 100) + Number.EPSILON) * 100) / 100
+      this.evtDataIsReady.emit(true)
     }
-    this.store.dataset.countryData = featureCollection
-    // console.log(JSON.stringify(featureCollection))
-    this.store.dataset.totalCases = res.totalCases
-    this.store.dataset.totalDeaths = res.totalDeaths
-    this.store.dataset.fatalityRate = res.fatalityRate
-    this.evtDataIsReady.emit(true)
+    // console.log(this.store.dataset.formatedData)
+  }
+
+  getData() {
+    this.http.get(`${environment.dataUrl}getData`).subscribe(
+      data => this.extractData(data),
+      err => {
+        console.log(err)
+        this.evtDataIsReady.emit(false)
+      }
+    )
   }
 
 

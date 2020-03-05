@@ -18,7 +18,7 @@ export class CartoService {
     const that = this
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/dark-v10',
+      style: 'mapbox://styles/aitahtman/ck6975yua1zb81imow9xarbld',
       zoom: 2
     });
 
@@ -26,6 +26,7 @@ export class CartoService {
 
     // map is ready
     this.map.on('load', () => {
+      console.log('Map is ready')
       that.evtMapIsReady.emit(true);
 
     });
@@ -44,11 +45,13 @@ export class CartoService {
     this.map.on('click', 'coronavirus', function (e) {
       const coordinates = e.features[0].geometry.coordinates.slice();
       const props = e.features[0].properties
-      console.log(e.features[0].properties)
-      var description = `
-      <h4> ${props.country}</h4>
-      <p> <b> Confirmed cases </b> : ${props.confirmedCases} </p>
-      <p> <b> Reported deaths </b> : ${props.reportedDeaths} </p>
+      // console.log(e.features[0].properties)
+      const title = props.province ? `<h4> ${props.country} | ${props.province} </h4>` : `<h4> ${props.country} </h4>`
+      const description = `
+      ${title}
+      <p class="confirmed-text"> <b> Confirmed cases </b> : ${props.Confirmed} </p>
+      <p class="deaths-text"> <b> Reported deaths </b> : ${props.Deaths} </p>
+      <p class="recovered-text"> <b>  Recovered </b> : ${props.Recovered} </p>
       `
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
@@ -73,11 +76,24 @@ export class CartoService {
       source: sourceName,
       paint: {
         "circle-radius": ["case",
-          ["==", ["get", "country"], "China"], 70,
-          ["*", ["get", "confirmedCases"], 2]
+          ["<=", ["to-number", ["get", "Confirmed"]], 10], 5,
+          ["<=", ["to-number", ["get", "Confirmed"]], 100], 8,
+          [">=", ["to-number", ["get", "Confirmed"]], 1000], 30,
+          [">=", ["to-number", ["get", "Confirmed"]], 100], 20,
+          ["<=", ["to-number", ["get", "Confirmed"]], 500], 25,
+          0.2
         ],
-        "circle-opacity": 0.7,
-        "circle-color": "red",
+        "circle-opacity": ["case",
+          ["<=", ["to-number", ["get", "Deaths"]], 10], 0.4,
+          [">=", ["to-number", ["get", "Deaths"]], 2500], 1,
+          [">=", ["to-number", ["get", "Deaths"]], 1000], 0.9,
+          [">=", ["to-number", ["get", "Deaths"]], 100], 0.7,
+          ["<=", ["to-number", ["get", "Deaths"]], 100], 0.5,
+          0.2
+        ],
+        "circle-color": "#E8231D",
+        "circle-stroke-width": 0.1,
+        "circle-stroke-color": 'black'
       }
     })
   }

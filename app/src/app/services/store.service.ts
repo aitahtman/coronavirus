@@ -9,9 +9,16 @@ export class StoreService {
 
 
   dataset: any = {
-    'countryData':[],
+    'countryData': [],
+    'data': {},
+    'formatedData': [],
     'totalCases': undefined,
     'totalDeaths': undefined,
-    'fatalityRate':undefined
-  }
+    'fatalityRate': undefined
+  };
+
+  ready: any = {
+    'data': undefined,
+    'map': undefined
+  };
 }
