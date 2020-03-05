@@ -55,8 +55,13 @@ export class DataService {
   private extractData(res) {
     // looping over res to generate the geojson
     if (res) {
+      // console.log(res.current)
       let geojson = this.makeGeojson(res.current)
       this.store.dataset.formatedData = geojson
+      this.store.dataset.totalCases = res.current.map(o => parseInt(o.Confirmed)).reduce((acc, curr) => acc + curr)
+      this.store.dataset.totalDeaths = res.current.map(o => parseInt(o.Deaths)).reduce((acc, curr) => acc + curr)
+      this.store.dataset.fatalityRate =
+        Math.round(((this.store.dataset.totalDeaths / this.store.dataset.totalCases * 100) + Number.EPSILON) * 100) / 100
       this.evtDataIsReady.emit(true)
     }
     // console.log(this.store.dataset.formatedData)
