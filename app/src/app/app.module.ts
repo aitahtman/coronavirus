@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MapComponent } from './components/map/map.component';
 import { InfoComponent } from './components/info/info.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { CountUpModule } from 'ngx-countup';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    CountUpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

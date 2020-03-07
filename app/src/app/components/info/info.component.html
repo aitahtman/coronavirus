@@ -1,16 +1,21 @@
-<div fxFlex="100" fxLayout="column"  fxLayout.xs="row" class="info-comp"
-  ngClass.xs="info-comp-xs" fxFlex.xs="100" >
+<div fxFlex="100" fxLayout="column" fxLayout.xs="row" class="info-comp" ngClass.xs="info-comp-xs" fxFlex.xs="100">
 
   <div fxFlex="35" fxLayoutAlign="center center" fxLayout="column" class="info-box">
     <div fxFLex="50" class="info-title"> Total cases</div>
-    <div fxFLex="50" class="info-value"> {{store.dataset.totalCases}} </div>
+    <div fxFLex="50" class="info-value">
+      <h3 [countUp]="store.dataset.totalCases" [options]="counterOptions">0</h3>
+    </div>
   </div>
   <div fxFlex="35" fxLayoutAlign="center center" fxLayout="column" class="info-box">
     <div fxFLex="50" class="info-title"> Total deaths</div>
-    <div fxFLex="50" class="info-value"> {{store.dataset.totalDeaths}} </div>
+    <div fxFLex="50" class="info-value">
+      <h3 [countUp]="store.dataset.totalDeaths" [options]="counterOptions">0</h3>
+    </div>
   </div>
   <div fxFlex="30" fxLayoutAlign="center center" fxLayout="column" class="info-box">
     <div fxFLex="50" class="info-title"> Fatality rate </div>
-    <div fxFLex="50" class="info-value"> {{store.dataset.fatalityRate}} </div>
+    <div fxFLex="50" class="info-value">
+      <h3 [countUp]="store.dataset.fatalityRate" [options]="counterOptionsDecimals">0</h3>
+    </div>
   </div>
 </div>
