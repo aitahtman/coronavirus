@@ -56,6 +56,7 @@ export class DataService {
     // looping over res to generate the geojson
     if (res) {
       // console.log(res.current)
+      this.store.dataset.data = res
       let geojson = this.makeGeojson(res.current)
       this.store.dataset.formatedData = geojson
       this.store.dataset.totalCases = res.current.map(o => parseInt(o.Confirmed)).reduce((acc, curr) => acc + curr)
