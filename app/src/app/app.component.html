@@ -1,17 +1,22 @@
-<!-- <div fxLayout="row" fxLayoutAlign="space-between">
-  <app-map></app-map>
-</div> -->
-
-
-<div class="content" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxFlexFill>
-  <div fxFlex="60" class="map-div">
-    <app-map></app-map>
-  </div>
-  <div fxFlex="10" class="info-div">
-    <app-info></app-info>
+<div class="uk-child-width-1-2@s uk-grid-match uk-height-1-1" uk-grid>
+  <div>
+    <div class="uk-card uk-card-secondary uk-card-body uk-padding-remove">
+      <app-map></app-map>
+    </div>
   </div>
 
-  <div fxFlex="30" fxLayoutAlign="start center" class="graphics-evol">
-    <app-evolution-graph ></app-evolution-graph>
+  <div>
+    <div>
+      <div class="uk-card uk-card-primary uk-card-body uk-padding-remove">
+        <app-evolution-graph></app-evolution-graph>
+      </div>
+    </div>
+    <div>
+      <div class="uk-card uk-padding-remove uk-card-body">
+        <app-info></app-info>
+      </div>
+    </div>
   </div>
+
+
 </div>

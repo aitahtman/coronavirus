@@ -1,4 +1,8 @@
 mat-card {
-  min-height: 80%;
   background-color: #343332;
+}
+
+.chart {
+  position: relative;
+  min-height: unset;
 }

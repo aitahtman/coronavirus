@@ -21,7 +21,7 @@ export class EvolutionGraphComponent implements OnInit {
   // public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
-    scales: {
+      scales: {
       // We use this empty structure as a placeholder for dynamic theming.
       xAxes: [{}],
       yAxes: [
