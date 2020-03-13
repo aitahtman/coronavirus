@@ -33,7 +33,7 @@
             "scripts": [
               "../app/node_modules/jquery/dist/jquery.min.js",
               "../app/node_modules/uikit/dist/js/uikit.min.js",
-              "../app/node_modules/uikit/dist/js/uikit-icons.min.js"
+              "../app/node_modules/uikit/dist/js/uikit-icons.min.js",
             ]
           },
           "configurations": {
@@ -94,7 +94,7 @@
             "scripts": [
               "../app/node_modules/jquery/dist/jquery.min.js",
               "../app/node_modules/uikit/dist/js/uikit.min.js",
-              "../app/node_modules/uikit/dist/js/uikit-icons.min.js"
+              "../app/node_modules/uikit/dist/js/uikit-icons.min.js",
             ]
           }
         },
