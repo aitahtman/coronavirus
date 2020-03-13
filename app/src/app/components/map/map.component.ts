@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { CartoService } from "../../services/carto.service";
 import { DataService } from "../../services/data.service";
 import { StoreService } from "../../services/store.service";
@@ -10,6 +10,7 @@ import { StoreService } from "../../services/store.service";
 export class MapComponent implements OnInit {
 
   isLoading: boolean;
+  @Input() height: Number
 
   constructor(
     private carto: CartoService,

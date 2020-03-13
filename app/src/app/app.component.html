@@ -1,20 +1,24 @@
-<div class="uk-section   ">
-  <div class="uk-child-width-1-2@s  " uk-grid>
+<div class="uk-section  uk-padding-remove">
+  <div class="uk-child-width-1-2@m   " uk-grid>
+
+    <!-- MAP -->
     <div>
       <div class="uk-card uk-card-secondary uk-card-body uk-padding-remove">
-        <app-map></app-map>
+        <app-map [height]=mapHeight></app-map>
       </div>
     </div>
+    <!-- FIN MAP -->
 
+    <!-- INFO  -->
     <div>
-      <!-- INFO  -->
       <div>
         <div class="uk-card uk-padding-remove uk-card-body">
           <app-info></app-info>
         </div>
       </div>
     </div>
+    <!-- FIN INFO -->
+
 
   </div>
 </div>
-
