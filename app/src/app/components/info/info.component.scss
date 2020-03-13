@@ -19,11 +19,25 @@
 .info-value {
   font-size: larger;
   font-weight: bold;
-  color: red;
+  color: rgba($color: red, $alpha: 1.0) !important;
+  text-align: center;
+  font-size: xx-large;
+}
+
+.info-value-secondary {
+  font-size: larger;
+  font-weight: bold;
+  color: rgba($color: green, $alpha: 1.0) !important;
+  text-align: center;
+  font-size: xx-large;
 }
 
 .info-box {
   border-color: gray;
   border-style: dotted;
   border-width: 0.1px;
+}
+
+.background-section{
+  background-color: rgba($color: #000000, $alpha: 0);
 }

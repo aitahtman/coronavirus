@@ -1,0 +1,11 @@
+<div class="uk-card uk-card-secondary uk-card-body uk-padding-remove-top uk-text-center">
+  <h3 class="uk-card-title"></h3>
+  <div uk-spinner="ratio: 3" *ngIf="!store.dataset.data.stats"></div>
+  <div class="chart" *ngIf="store.dataset.data.stats">
+
+    <canvas baseChart height="360" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+      [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins"
+      (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+
+  </div>
+</div>
