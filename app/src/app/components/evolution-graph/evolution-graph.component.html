@@ -1,7 +1,7 @@
 <mat-card>
   <div class="chart" *ngIf="store.dataset.data.stats">
 
-    <canvas baseChart height="200" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+    <canvas baseChart height="400" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
       [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins"
       (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
 

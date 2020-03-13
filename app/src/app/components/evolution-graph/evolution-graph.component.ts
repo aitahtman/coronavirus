@@ -21,7 +21,8 @@ export class EvolutionGraphComponent implements OnInit {
   // public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
-      scales: {
+    maintainAspectRatio: false,
+    scales: {
       // We use this empty structure as a placeholder for dynamic theming.
       xAxes: [{}],
       yAxes: [
@@ -48,24 +49,24 @@ export class EvolutionGraphComponent implements OnInit {
   public lineChartColors: Color[] = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
-      borderColor: 'rgba(148,159,177,1)',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      borderColor: 'orange',
+      pointBackgroundColor: 'orange',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
     { // dark grey
-      backgroundColor: 'rgba(77,83,96,0.2)',
-      borderColor: 'rgba(77,83,96,1)',
-      pointBackgroundColor: 'rgba(77,83,96,1)',
+      backgroundColor: 'rgba(255,0,0,0.3)',
+      borderColor: 'red',
+      pointBackgroundColor: 'red',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
     { // red
-      backgroundColor: 'rgba(255,0,0,0.3)',
-      borderColor: 'red',
-      pointBackgroundColor: 'rgba(148,159,177,1)',
+      backgroundColor: 'rgba(11,156,49,0.3)',
+      borderColor: 'green',
+      pointBackgroundColor: 'green',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
@@ -97,10 +98,11 @@ export class EvolutionGraphComponent implements OnInit {
     const results: ChartDataSets[] = []
     for (let i = 0; i < sheets.length; i++) {
       const sheet = sheets[i];
-
+      console.log(sheet)
       const chartData = this.store.dataset.data.stats[sheet].map(o => o.value)
+      const dataToPush = sheet == 'Deaths' ? { 'data': chartData, 'label': sheet, yAxisID: 'y-axis-1' } : { 'data': chartData, 'label': sheet }
 
-      results.push({ 'data': chartData, 'label': sheet })
+      results.push(dataToPush)
 
     }
     return results
@@ -122,11 +124,11 @@ export class EvolutionGraphComponent implements OnInit {
 
   // events
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
+    // console.log(event, active);
   }
 
   public hideOne() {

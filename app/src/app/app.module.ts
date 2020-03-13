@@ -11,7 +11,7 @@ import { MapComponent } from './components/map/map.component';
 import { InfoComponent } from './components/info/info.component';
 import { MatProgressBarModule, MatCardModule } from '@angular/material/';
 import { CountUpModule } from 'ngx-countup';
-import { EvolutionGraphComponent } from './componenets/evolution-graph/evolution-graph.component';
+import { EvolutionGraphComponent } from './components/evolution-graph/evolution-graph.component';
 import { ChartsModule } from 'ng2-charts';
 
 
