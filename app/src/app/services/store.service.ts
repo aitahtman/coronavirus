@@ -14,7 +14,9 @@ export class StoreService {
     'formatedData': [],
     'totalCases': undefined,
     'totalDeaths': undefined,
-    'fatalityRate': undefined
+    'fatalityRate': undefined,
+    'totalRecovered': undefined,
+    'sheets': ['Confirmed', 'Deaths', 'Recovered']
   };
 
   ready: any = {

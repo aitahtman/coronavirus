@@ -19,7 +19,8 @@ export class CartoService {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/aitahtman/ck6975yua1zb81imow9xarbld',
-      zoom: 2
+      zoom: 2,
+      center: [4, 35],
     });
 
     this.map.addControl(new mapboxgl.NavigationControl());
@@ -46,7 +47,7 @@ export class CartoService {
       const coordinates = e.features[0].geometry.coordinates.slice();
       const props = e.features[0].properties
       // console.log(e.features[0].properties)
-      const title = props.province ? `<h4> ${props.country} | ${props.province} </h4>` : `<h4> ${props.country} </h4>`
+      const title = props.province ? `<h5> ${props.country} | ${props.province} </h5>` : `<h5> ${props.country} </h5>`
       const description = `
       ${title}
       <p class="confirmed-text"> <b> Confirmed cases </b> : ${props.Confirmed} </p>

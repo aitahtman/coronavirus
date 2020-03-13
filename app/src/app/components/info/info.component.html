@@ -1,16 +1,66 @@
-<div fxFlex="100" fxLayout="column"  fxLayout.xs="row" class="info-comp"
-  ngClass.xs="info-comp-xs" fxFlex.xs="100" >
+<div class="uk-section uk-section-secondary uk-padding-remove background-section">
+  <!-- INFO  -->
+  <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+    <!--  GRAPH EVOL -->
+    <div>
+      <div class="uk-card uk-card-secondary uk-card-body uk-padding-remove">
+        <app-evolution-graph></app-evolution-graph>
+      </div>
+    </div>
 
-  <div fxFlex="35" fxLayoutAlign="center center" fxLayout="column" class="info-box">
-    <div fxFLex="50" class="info-title"> Total cases</div>
-    <div fxFLex="50" class="info-value"> {{store.dataset.totalCases}} </div>
+    <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
+      <div>
+        <div class="uk-card uk-card-secondary uk-card-body uk-text-center">
+          <h3 class="uk-card-title " [countUp]="store.dataset.totalCases" [options]="counterOptions" class="info-value">
+            0
+          </h3>
+          <p>Total of cases</p>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-secondary uk-card-body uk-text-center uk-padding-remove">
+          <div class="uk-child-width-expand@s uk-text-center uk-grid-match" uk-grid>
+
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body">
+                <h3 class="uk-card-title " [countUp]="store.dataset.totalRecovered" [options]="counterOptions"
+                  class="info-value-secondary">
+                  0
+                </h3>
+                <p>Recovered</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="uk-card uk-card-secondary uk-card-body uk-text-center uk-padding-remove transparent-card">
+          <div class="uk-child-width-expand@s uk-text-center uk-grid-match " uk-grid>
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body">
+                <h3 class="uk-card-title " [countUp]="store.dataset.fatalityRate" [options]="counterOptionsDecimals"
+                  class="info-value">
+                  0
+                </h3>
+                <p>Fatality rate</p>
+              </div>
+            </div>
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body">
+                <h3 class="uk-card-title " [countUp]="store.dataset.totalDeaths" [options]="counterOptions"
+                  class="info-value">
+                  0
+                </h3>
+                <p>Deaths</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div fxFlex="35" fxLayoutAlign="center center" fxLayout="column" class="info-box">
-    <div fxFLex="50" class="info-title"> Total deaths</div>
-    <div fxFLex="50" class="info-value"> {{store.dataset.totalDeaths}} </div>
-  </div>
-  <div fxFlex="30" fxLayoutAlign="center center" fxLayout="column" class="info-box">
-    <div fxFLex="50" class="info-title"> Fatality rate </div>
-    <div fxFLex="50" class="info-value"> {{store.dataset.fatalityRate}} </div>
-  </div>
+
+
+
+
 </div>

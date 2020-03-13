@@ -5,18 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule,GridModule } from '@angular/flex-layout';
 
 import { MapComponent } from './components/map/map.component';
 import { InfoComponent } from './components/info/info.component';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule, MatCardModule } from '@angular/material/';
+import { CountUpModule } from 'countup.js-angular2';
+import { EvolutionGraphComponent } from './components/evolution-graph/evolution-graph.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    InfoComponent
+    InfoComponent,
+    EvolutionGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     BrowserAnimationsModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatProgressBarModule
+    GridModule,
+    MatProgressBarModule,
+    CountUpModule,
+    MatCardModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

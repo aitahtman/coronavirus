@@ -9,6 +9,8 @@ export class InfoComponent implements OnInit {
 
   constructor(public store: StoreService) { }
 
+  counterOptionsDecimals = { 'decimalPlaces': 2 }
+  counterOptions = { 'separator': ' ' }
   ngOnInit() {
   }
 
