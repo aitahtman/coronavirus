@@ -24,6 +24,14 @@
   font-size: xx-large;
 }
 
+.info-value-secondary {
+  font-size: larger;
+  font-weight: bold;
+  color: rgba($color: green, $alpha: 1.0) !important;
+  text-align: center;
+  font-size: xx-large;
+}
+
 .info-box {
   border-color: gray;
   border-style: dotted;

@@ -63,6 +63,8 @@ export class DataService {
       this.store.dataset.totalDeaths = res.current.map(o => parseInt(o.Deaths)).reduce((acc, curr) => acc + curr)
       this.store.dataset.fatalityRate =
         Math.round(((this.store.dataset.totalDeaths / this.store.dataset.totalCases * 100) + Number.EPSILON) * 100) / 100
+
+      this.store.dataset.totalRecovered = res.current.map(o => parseInt(o.Recovered)).reduce((acc, curr) => acc + curr)
       this.evtDataIsReady.emit(true)
     }
     // console.log(this.store.dataset.formatedData)

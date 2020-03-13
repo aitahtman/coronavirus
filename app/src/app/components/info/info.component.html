@@ -18,21 +18,43 @@
         </div>
       </div>
       <div>
-        <div class="uk-card uk-card-secondary uk-card-body uk-text-center">
-          <h3 class="uk-card-title " [countUp]="store.dataset.fatalityRate" [options]="counterOptionsDecimals"
-            class="info-value">
-            0
-          </h3>
-          <p>Fatality rate</p>
+        <div class="uk-card uk-card-secondary uk-card-body uk-text-center uk-padding-remove">
+          <div class="uk-child-width-expand@s uk-text-center uk-grid-match" uk-grid>
+
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body">
+                <h3 class="uk-card-title " [countUp]="store.dataset.totalRecovered" [options]="counterOptions"
+                  class="info-value-secondary">
+                  0
+                </h3>
+                <p>Recovered</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div>
-        <div class="uk-card uk-card-secondary uk-card-body uk-text-center">
-          <h3 class="uk-card-title " [countUp]="store.dataset.totalDeaths" [options]="counterOptions"
-            class="info-value">
-            0
-          </h3>
-          <p>Total of deaths</p>
+        <div class="uk-card uk-card-secondary uk-card-body uk-text-center uk-padding-remove transparent-card">
+          <div class="uk-child-width-expand@s uk-text-center uk-grid-match " uk-grid>
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body">
+                <h3 class="uk-card-title " [countUp]="store.dataset.fatalityRate" [options]="counterOptionsDecimals"
+                  class="info-value">
+                  0
+                </h3>
+                <p>Fatality rate</p>
+              </div>
+            </div>
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body">
+                <h3 class="uk-card-title " [countUp]="store.dataset.totalDeaths" [options]="counterOptions"
+                  class="info-value">
+                  0
+                </h3>
+                <p>Deaths</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -98,7 +98,7 @@ export class EvolutionGraphComponent implements OnInit {
     const results: ChartDataSets[] = []
     for (let i = 0; i < sheets.length; i++) {
       const sheet = sheets[i];
-      console.log(sheet)
+      // console.log(sheet)
       const chartData = this.store.dataset.data.stats[sheet].map(o => o.value)
       const dataToPush = sheet == 'Deaths' ? { 'data': chartData, 'label': sheet, yAxisID: 'y-axis-1' } : { 'data': chartData, 'label': sheet }
 

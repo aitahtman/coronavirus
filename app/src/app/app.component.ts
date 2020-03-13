@@ -16,7 +16,7 @@ export class AppComponent {
 
   constructor(private mediaObserver: MediaObserver) {
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
-      console.log(change)
+      // console.log(change)
       this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
       this.mapHeight = ['sm', 'xs'].includes(change.mqAlias) ? 60 : 100
 
