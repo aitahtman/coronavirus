@@ -13,6 +13,7 @@ import { MatProgressBarModule, MatCardModule } from '@angular/material/';
 import { CountUpModule } from 'countup.js-angular2';
 import { EvolutionGraphComponent } from './components/evolution-graph/evolution-graph.component';
 import { ChartsModule } from 'ng2-charts';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ChartsModule } from 'ng2-charts';
     AppComponent,
     MapComponent,
     InfoComponent,
-    EvolutionGraphComponent
+    EvolutionGraphComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

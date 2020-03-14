@@ -8,6 +8,14 @@
 // 4. Import UIkit.
 @import "../app/node_modules/uikit/src/scss/uikit-theme.scss";
 
+
+// personal fonts
+@font-face{
+  font-family: 'AmericanCaptain';
+  src: url('assets/fonts/American_Captain.otf') format('opentype');
+}
+
+
 html,
 body {
   height: 100%;
