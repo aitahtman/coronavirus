@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
-  mapbox:{
+  mapbox: {
     accessToken: 'pk.eyJ1IjoiYWl0YWh0bWFuIiwiYSI6ImNqNG50emUwaTF2dWsyd283M2VhY2FpaTcifQ.eOs9cdOfs_YlXpO1gu2uWA'
   },
-  dataUrl:"https://gisero.fr/api/cov/"
+  dataUrl: "https://gisero.fr/api/cov/",
+  media: {
+    github: "https://github.com/aitahtman"
+  }
 };
 
 

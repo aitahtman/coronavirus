@@ -11,7 +11,7 @@
     <div class="uk-child-width-1-1@m uk-grid-small uk-grid-match" uk-grid>
       <div>
         <div class="uk-card uk-card-secondary uk-card-body uk-text-center">
-          <h3 class="uk-card-title " [countUp]="store.dataset.totalCases" [options]="counterOptions" class="info-value">
+          <h3 class="uk-card-title " [countUp]="store.dataset.totalCases" [options]="counterOptions" class="info-value info-value">
             0
           </h3>
           <p>Total of cases</p>
@@ -24,7 +24,7 @@
             <div>
               <div class="uk-card uk-card-secondary uk-card-body">
                 <h3 class="uk-card-title " [countUp]="store.dataset.totalRecovered" [options]="counterOptions"
-                  class="info-value-secondary">
+                  class="info-value info-value-secondary">
                   0
                 </h3>
                 <p>Recovered</p>
@@ -39,7 +39,7 @@
             <div>
               <div class="uk-card uk-card-secondary uk-card-body">
                 <h3 class="uk-card-title " [countUp]="store.dataset.fatalityRate" [options]="counterOptionsDecimals"
-                  class="info-value">
+                  class="info-value info-value">
                   0
                 </h3>
                 <p>Fatality rate</p>
@@ -48,10 +48,18 @@
             <div>
               <div class="uk-card uk-card-secondary uk-card-body">
                 <h3 class="uk-card-title " [countUp]="store.dataset.totalDeaths" [options]="counterOptions"
-                  class="info-value">
+                  class="info-value info-value">
                   0
                 </h3>
                 <p>Deaths</p>
+              </div>
+            </div>
+            <div>
+              <div class="uk-card uk-card-secondary uk-card-body" *ngIf="store.dataset.lastUpdate">
+                <h3 class="uk-card-title info-value info-value-tertiary" >
+                  {{store.dataset.lastUpdate | date}}
+                </h3>
+                <p>Last update  </p>
               </div>
             </div>
           </div>
