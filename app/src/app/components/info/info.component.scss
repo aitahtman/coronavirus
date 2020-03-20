@@ -17,17 +17,26 @@
 }
 
 .info-value {
-  font-size: larger;
-  font-weight: bold;
+
   color: rgba($color: red, $alpha: 1.0) !important;
-  text-align: center;
-  font-size: xx-large;
+
 }
 
 .info-value-secondary {
+
+  color: rgba($color: green, $alpha: 1.0) !important;
+
+}
+
+.info-value-tertiary {
+
+  color: rgba($color: white, $alpha: 0.8) !important;
+
+}
+
+.info-value {
   font-size: larger;
   font-weight: bold;
-  color: rgba($color: green, $alpha: 1.0) !important;
   text-align: center;
   font-size: xx-large;
 }
