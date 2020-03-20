@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { StoreService } from './store.service';
 import Countries from '../../assets/countries.json';
-
+import {min,max}  from 'lodash'
 @Injectable({
   providedIn: 'root'
 })
@@ -66,6 +66,11 @@ export class DataService {
 
       this.store.dataset.totalRecovered = res.current.map(o => parseInt(o.Recovered)).reduce((acc, curr) => acc + curr)
       this.evtDataIsReady.emit(true)
+
+      // const datesDatasetas = res.current.map(o => o.date)
+      const datesDataset = res.current.map(o => new Date(o.date))
+      // console.log([... new Set(datesDatasetas)])
+      this.store.dataset.lastUpdate =max(datesDataset)
     }
     // console.log(this.store.dataset.formatedData)
   }
