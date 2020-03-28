@@ -89,7 +89,7 @@ export class EvolutionGraphComponent implements OnInit {
       const sheets = this.store.dataset.sheets
       this.lineChartLabels = this.store.dataset.data.stats[sheets[0]].map(o => o.date)
       this.lineChartData = this.formatStatsData(sheets)
-      // console.log('dada',dada)
+      // console.log('dada',this.lineChartLabels)
     })
 
   }
@@ -100,7 +100,7 @@ export class EvolutionGraphComponent implements OnInit {
       const sheet = sheets[i];
       // console.log(sheet)
       const chartData = this.store.dataset.data.stats[sheet].map(o => o.value)
-      const dataToPush = sheet == 'Deaths' ? { 'data': chartData, 'label': sheet, yAxisID: 'y-axis-1' } : { 'data': chartData, 'label': sheet }
+      const dataToPush = sheet == 'deaths' ? { 'data': chartData, 'label': sheet, yAxisID: 'y-axis-1' } : { 'data': chartData, 'label': sheet }
 
       results.push(dataToPush)
 

@@ -59,20 +59,17 @@ export class DataService {
       this.store.dataset.data = res
       let geojson = this.makeGeojson(res.current)
       this.store.dataset.formatedData = geojson
-      this.store.dataset.totalCases = res.current.map(o => parseInt(o.Confirmed)).reduce((acc, curr) => acc + curr)
-      this.store.dataset.totalDeaths = res.current.map(o => parseInt(o.Deaths)).reduce((acc, curr) => acc + curr)
+      this.store.dataset.totalCases = res.current.map(o => parseInt(o.confirmed)).reduce((acc, curr) => acc + curr)
+      this.store.dataset.totalDeaths = res.current.map(o => parseInt(o.deaths)).reduce((acc, curr) => acc + curr)
       this.store.dataset.fatalityRate =
         Math.round(((this.store.dataset.totalDeaths / this.store.dataset.totalCases * 100) + Number.EPSILON) * 100) / 100
 
-      this.store.dataset.totalRecovered = res.current.map(o => parseInt(o.Recovered)).reduce((acc, curr) => acc + curr)
+      // data is ready
       this.evtDataIsReady.emit(true)
 
-      // const datesDatasetas = res.current.map(o => o.date)
       const datesDataset = res.current.map(o => new Date(o.date))
-      // console.log([... new Set(datesDatasetas)])
       this.store.dataset.lastUpdate =max(datesDataset)
     }
-    // console.log(this.store.dataset.formatedData)
   }
 
   getData() {

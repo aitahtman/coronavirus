@@ -29,16 +29,13 @@ body {
 
 
 .confirmed-text {
-  color: orange
+  color: orange !important
 }
 
 .deaths-text {
   color: red
 }
 
-.recovered-text {
-  color: green;
-}
 
 .mapboxgl-popup-content {
   background-color: #303030 !important;
