@@ -50,9 +50,8 @@ export class CartoService {
       const title = props.province ? `<h5> ${props.country} | ${props.province} </h5>` : `<h5> ${props.country} </h5>`
       const description = `
       ${title}
-      <p class="confirmed-text"> <b> Confirmed cases </b> : ${props.Confirmed} </p>
-      <p class="deaths-text"> <b> Reported deaths </b> : ${props.Deaths} </p>
-      <p class="recovered-text"> <b>  Recovered </b> : ${props.Recovered} </p>
+      <p class="confirmed-text"> <b> confirmed cases </b> : ${props.confirmed} </p>
+      <p class="deaths-text"> <b> Reported deaths </b> : ${props.deaths} </p>
       `
       // Ensure that if the map is zoomed out such that multiple
       // copies of the feature are visible, the popup appears
@@ -77,19 +76,19 @@ export class CartoService {
       source: sourceName,
       paint: {
         "circle-radius": ["case",
-          ["<=", ["to-number", ["get", "Confirmed"]], 10], 5,
-          ["<=", ["to-number", ["get", "Confirmed"]], 100], 8,
-          [">=", ["to-number", ["get", "Confirmed"]], 1000], 30,
-          [">=", ["to-number", ["get", "Confirmed"]], 100], 20,
-          ["<=", ["to-number", ["get", "Confirmed"]], 500], 25,
+          ["<=", ["to-number", ["get", "confirmed"]], 10], 5,
+          ["<=", ["to-number", ["get", "confirmed"]], 100], 8,
+          [">=", ["to-number", ["get", "confirmed"]], 1000], 30,
+          [">=", ["to-number", ["get", "confirmed"]], 100], 20,
+          ["<=", ["to-number", ["get", "confirmed"]], 500], 25,
           0.2
         ],
         "circle-opacity": ["case",
-          ["<=", ["to-number", ["get", "Deaths"]], 10], 0.4,
-          [">=", ["to-number", ["get", "Deaths"]], 2500], 1,
-          [">=", ["to-number", ["get", "Deaths"]], 1000], 0.9,
-          [">=", ["to-number", ["get", "Deaths"]], 100], 0.7,
-          ["<=", ["to-number", ["get", "Deaths"]], 100], 0.5,
+          ["<=", ["to-number", ["get", "deaths"]], 10], 0.4,
+          [">=", ["to-number", ["get", "deaths"]], 2500], 1,
+          [">=", ["to-number", ["get", "deaths"]], 1000], 0.9,
+          [">=", ["to-number", ["get", "deaths"]], 100], 0.7,
+          ["<=", ["to-number", ["get", "deaths"]], 100], 0.5,
           0.2
         ],
         "circle-color": "#E8231D",
