@@ -30,7 +30,7 @@
     "countup.js-angular2": "^7.3.0",
     "d3": "^5.15.0",
     "hammerjs": "^2.0.8",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mapbox-gl": "^1.7.0",
     "ng2-charts": "^2.3.0",
     "ngx-countup": "^7.3.0",
